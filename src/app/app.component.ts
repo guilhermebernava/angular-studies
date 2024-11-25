@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 
+//DECORATOR que serve para transformar essa classe em um componente no angular
 @Component({
+  standalone: false,
+  //serve para dizer qual vai ser o nome da TAG que vamos usar para chamar esse componente
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
+  //serve para importar coisas para serem usados dentro desse componente, inclusive outros componentes
+  //e de fato o HTML que esse componente ira usar
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  //isso e o CSS que esse HTML esta usando
+  styleUrl: './app.component.css',
 })
-export class AppComponent {
-  title = 'alurapic';
-}
+
+//dizendo que o COMPONENTE DEVERA IMPLEMENTAR o ngOnInit
+export class AppComponent {}

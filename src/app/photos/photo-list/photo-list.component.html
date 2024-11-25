@@ -1,0 +1,9 @@
+<!-- 
+    Usando o OUTPUT do componente FILHO, para conseguir colocar o 
+    valor do que foi digitado nele, na variavel FILTER do componetne pai 
+ -->
+<app-search-filter (onChange)="filter = $event" [value]='filter'></app-search-filter>
+
+<app-photos [photos]="photos | filterByDescription: filter"> </app-photos>
+
+<app-load-button [hasMore]="hasMore" (click)="loadMorePhotos()"></app-load-button>
