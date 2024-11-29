@@ -1,0 +1,24 @@
+<h4 class="text-center">Login</h4>
+
+<form [formGroup]="loginForm" class="form mt-4" (submit)="login()">
+
+  <div class="form-group">
+    <!-- #usernameInput serve para que o angular pegue essa referencia dessa TAG para o COMPONENTE -->
+    <input #usernameInput formControlName="username" class="form-control" placeholder="user name" autofocus>
+    <app-input-error [formGroup]="loginForm" formControlName="username" errorMessage="Username is required" />
+  </div>
+
+  <div class="form-group">
+    <!-- Adicionando o FORM GROUP no INPUT -->
+    <input formControlName="password" type="password" class="form-control" placeholder="password">
+    <!-- componente CUSTOM para fazer validação com *NgIF -->
+    <app-input-error [formGroup]="loginForm" formControlName="password" errorMessage="Passowrd is required" />
+  </div>
+
+  <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary btn-block">
+    login
+  </button>
+
+</form>
+
+<p>Not a user?<a>Register now</a></p>

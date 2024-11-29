@@ -1,0 +1,5 @@
+<!-- Faz uma validação pelo INPUT definido no FormGroup para verificar se tem algum erro, e caso tenha
+ ele vai mostrar esse texto em tela -->
+<small class="text-danger d-block mt-2" *ngIf="formGroup?.get(formControlName)?.errors?.['required']">
+  {{errorMessage}}
+</small>

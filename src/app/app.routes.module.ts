@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { ErrorsModule } from './commons/errors/errors.module';
 import { NotFoundComponent } from './commons/errors/not-found/not-found.component';
 import { PhotoListResolver } from './photos/photo-list/photo-list.resolver';
+import { SignInComponent } from './home/sign-in/sign-in.component';
 
 //criando as rotas e qual componente vai ser usado quando acessar essa rota
 export const routes: Routes = [
@@ -16,6 +17,10 @@ export const routes: Routes = [
       //criando um RESOLVER somente para propriedade PHOTOS
       photos: PhotoListResolver,
     },
+  },
+  {
+    path: '',
+    component: SignInComponent,
   },
   {
     path: 'add',
