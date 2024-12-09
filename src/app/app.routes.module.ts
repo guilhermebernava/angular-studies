@@ -6,6 +6,9 @@ import { ErrorsModule } from './commons/errors/errors.module';
 import { NotFoundComponent } from './commons/errors/not-found/not-found.component';
 import { PhotoListResolver } from './photos/photo-list/photo-list.resolver';
 import { SignInComponent } from './home/sign-in/sign-in.component';
+import { SignInGuard } from './core/auth/sign-in-guard';
+import { AuthGuard } from './core/auth/auth-guard';
+import { PhotoGuard } from './core/photos/photo-guard';
 
 //criando as rotas e qual componente vai ser usado quando acessar essa rota
 export const routes: Routes = [
@@ -17,14 +20,17 @@ export const routes: Routes = [
       //criando um RESOLVER somente para propriedade PHOTOS
       photos: PhotoListResolver,
     },
+    canActivate: [AuthGuard, PhotoGuard],
   },
   {
     path: '',
     component: SignInComponent,
+    canActivate: [SignInGuard],
   },
   {
     path: 'add',
     component: PhotoFormComponent,
+    canActivate: [AuthGuard],
   },
   //vai colocar esse componente para qualquer rota que nn for encontrada
   { path: '**', component: NotFoundComponent },

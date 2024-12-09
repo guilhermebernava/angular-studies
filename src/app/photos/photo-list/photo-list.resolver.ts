@@ -8,16 +8,18 @@ import { Observable } from 'rxjs';
 
 import { Photo } from './photo/photo';
 import { PhotoService } from './photo/photo.services';
+import { UserService } from '../../core/user/user-service';
 
 @Injectable({ providedIn: 'root' })
 //implementando o RESOLVE com o tipo de resultado do nosso servico
 export class PhotoListResolver implements Resolve<Observable<Photo[]>> {
-  constructor(private service: PhotoService) {}
+  constructor(
+    private service: PhotoService,
+    private userServices: UserService
+  ) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    //estamos pegando o parametro que vem na rota, para buscar as photos por nome do usuario
-    const userName = route.params['username'];
     //e por fim estamos devolvendo o resultado do servico
-    return this.service.getPhotoByUserPagination(userName, 1);
+    return this.service.getPhotoByUserPagination(this.userServices.userName, 1);
   }
 }

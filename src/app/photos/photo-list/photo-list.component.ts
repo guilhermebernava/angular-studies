@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Photo } from './photo/photo';
 import { ActivatedRoute } from '@angular/router';
 import { PhotoService } from './photo/photo.services';
+import { UserService } from '../../core/user/user-service';
 
 @Component({
   selector: 'app-photo-list',
@@ -19,7 +20,8 @@ export class PhotoListComponent implements OnInit {
   constructor(
     //esta pegando as informacoes da rota atual
     private activatedRoute: ActivatedRoute,
-    private photoSerivce: PhotoService
+    private photoSerivce: PhotoService,
+    private userServices: UserService
   ) {}
 
   //vai rodar toda vez que o componente for carregado
@@ -27,7 +29,7 @@ export class PhotoListComponent implements OnInit {
     //estamos buscando o resultado do nosso RESOLVER, atraves do snapshot da nossa rota
     //esse valor devera estar em photos pois definimos isso na parte de rotas
     this.photos = this.activatedRoute.snapshot.data['photos'];
-    this.userName = this.activatedRoute.snapshot.params['username'];
+    this.userName = this.userServices.userName;
   }
 
   loadMorePhotos() {

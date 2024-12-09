@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { CardModule } from '../../commons/cards/card.module';
 import { SearchFilterModule } from '../../commons/search-filter/search-filter.module';
 import { DarkenOnHoverModule } from '../../commons/directives/dark-on-hover/dark-on-hover.module';
+import { HeaderModule } from '../../commons/header/header.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,13 @@ import { DarkenOnHoverModule } from '../../commons/directives/dark-on-hover/dark
     LoadButtonComponent,
     FilterByDescription,
   ],
-  imports: [CommonModule, CardModule, SearchFilterModule, DarkenOnHoverModule],
+  imports: [
+    CommonModule,
+    CardModule,
+    SearchFilterModule,
+    DarkenOnHoverModule,
+    HeaderModule,
+  ],
   exports: [FilterByDescription],
 })
 export class PhotoListModule {}
